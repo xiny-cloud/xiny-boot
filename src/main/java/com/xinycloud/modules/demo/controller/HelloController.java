@@ -1,9 +1,11 @@
 package com.xinycloud.modules.demo.controller;
 
-import com.sun.org.apache.xpath.internal.objects.XString;
-import com.sun.org.apache.xpath.internal.objects.XStringForChars;
+import com.xinycloud.modules.demo.entity.User;
+import com.xinycloud.modules.demo.mapper.UserMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * @Auther: xiny
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class HelloController {
+
+    @Resource
+    private UserMapper userMapper;
 
     /**
      * @Author xiny
@@ -29,6 +34,10 @@ public class HelloController {
     public String exception() {
         int a = 2 / 0;
         return String.valueOf(a);
+    }
+    @RequestMapping("/getUser")
+    public User getUserById(String id) {
+        return userMapper.getById(id);
     }
 
 
