@@ -15,6 +15,7 @@ public class HtmlController {
     @RequestMapping("/index")
     public String index(Model model) {
         model.addAttribute("name","Xiny");
+        model.addAttribute("version", "1.0");
         return "index";
     }
 }
